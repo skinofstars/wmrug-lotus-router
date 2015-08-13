@@ -35,6 +35,31 @@ BASICS
 
       routing_in_rack = <<ROR
 <h1>Rack routing</h1>
+
+<h2>Method 1. Do it in the object</h2>
+<pre class="code">
+class SelfRoutingRackApp
+  def self.call(env)
+    req = Rack::Request.new(env)
+    case req.path
+    when "/"
+      Rack::Response.new("Hello world!")
+    when /^\/name\/(.*)/
+      Rack::Response.new("Hello, \#{$1}!")
+    else
+      Rack::Response.new("Not found", 404)
+    end
+  end
+end
+</pre>
+
+<h2>Method 2. Rack::URLMap</h2>
+<pre class="code">
+run Rack::URLMap.new(
+  '/rack/basics'  => WmRug::RackBasics,
+  '/rack/routing' => WmRug::RackRouting
+)
+</pre>
 <a href="/rack/basics" rel="previous">&laquo; Rack basics </a> &middot; <a href="/lotus/routing" rel="next">Lotus routing &raquo;</a>
 ROR
 
