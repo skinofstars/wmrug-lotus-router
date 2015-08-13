@@ -1,0 +1,25 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    http_router (0.11.2)
+      rack (>= 1.0.0)
+      url_mount (~> 0.2.1)
+    lotus-router (0.4.2)
+      http_router (~> 0.11)
+      lotus-utils (~> 0.5, >= 0.5.1)
+    lotus-utils (0.5.1)
+    rack (1.6.4)
+    url_mount (0.2.1)
+      rack
+    webrick (1.3.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  lotus-router
+  rack
+  webrick
+
+BUNDLED WITH
+   1.10.6
