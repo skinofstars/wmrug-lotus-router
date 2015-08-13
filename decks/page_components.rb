@@ -12,6 +12,7 @@ module Deck
 <head>
   <title></title>
   <link rel="stylesheet" href="/public/tufte.css"/>
+  <link rel="icon" type="image/png" href="/public/lotus-icon.png" />
 </head>
 <body>
   __CONTENT__
