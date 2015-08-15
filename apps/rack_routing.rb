@@ -60,7 +60,7 @@ run Rack::URLMap.new(
   '/rack/routing' => WmRug::RackRouting
 )
 </pre>
-<a href="/rack/basics" rel="previous">&laquo; Rack basics </a> &middot; <a href="/lotus/routing" rel="next">Lotus routing &raquo;</a>
+<a href="/rack/basics" rel="previous">&laquo; Rack basics </a> &middot; <a href="/lotus-router/basics" rel="next">Lotus::Router basics &raquo;</a>
 ROR
 
       ['200', {'Content-Type' => 'text/html'}, [routing_in_rack]]

@@ -6,7 +6,7 @@ module WmRug
       if req.path == "/"
 
       intro = <<TEXT
-<h1>Lotus::Router</h1>
+<h1>A Lotus::Router primer</h1>
 <h2>Intro</h2>
 
 <p>Welcome to a short introduction to Lotus::Router.</p>

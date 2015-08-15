@@ -7,7 +7,9 @@ module Deck
     def call(env)
       status, headers, response = @app.call(env)
 
-      layout = <<LAYOUT
+      # puts response.inspect
+
+      head = <<HEAD
 <html>
 <head>
   <title></title>
@@ -15,12 +17,19 @@ module Deck
   <link rel="icon" type="image/png" href="/public/lotus-icon.png" />
 </head>
 <body>
-  __CONTENT__
+HEAD
+
+# content goes here ;)
+
+      foot = <<FOOT
 </body>
 </html>
-LAYOUT
+FOOT
 
-      response[0] = layout.gsub!(/__CONTENT__/, response[0])
+      response.unshift(head)
+      response.push(foot)
+
+      # response[0] = layout.gsub!(/__CONTENT__/, response[0])
 
       [status, headers, response]
     end

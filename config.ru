@@ -4,22 +4,22 @@
 # grab our apps
 Dir["apps/*.rb"].sort.each {|req| require_relative req}
 
-# grab the slide overrides
+# grab the layouts and slide overrides
 Dir["decks/*.rb"].sort.each {|req| require_relative req}
 
+# Reload .rb files on change. Always add ContentLength header. Server static assets.
 use Rack::Reloader, 0
+use Rack::ContentLength
+use Rack::Static, :urls => ["/public"]
 
 intro = Rack::Builder.new do
-  use Rack::ContentLength
-  use Rack::Static, :urls => ["/public"]
+  use Deck::KeyNav
   use Deck::Layout
   run WmRug::Intro
 end
 
 rack_routing = Rack::Builder.new do
-  use Rack::ContentLength
-  # use Deck::RackSlides # not sure if we're gonna use this now
-  use Rack::Static, :urls => ["/public"]
+  use Deck::KeyNav
   use Deck::Layout
   run Rack::URLMap.new(
     '/rack/basics'  => WmRug::RackBasics,
@@ -28,8 +28,27 @@ rack_routing = Rack::Builder.new do
 end
 
 lotus_router = Rack::Builder.new do
-  # run WmRug::LotusRouting.new
-  run lambda { |env| ['200', {}, ['lotus_router']] }
+  require 'lotus/router'
+
+  use Deck::KeyNav
+  use Deck::Layout
+
+  run Rack::URLMap.new(
+    '/lotus-router' => Lotus::Router.new do
+      get '/basics',  to: WmRug::Basics
+      get '/dsl',     to: WmRug::DSL
+
+
+      # RackClassy still reponds to #call, so rock on!
+      # mount WmRug::RackClassy, at: '/mounty'
+
+      # using the controller + action syntax
+      get '/moduley', to: 'app_controller#index'
+
+      # getting globby .... might be taking the 'y' thing a bit far
+      get '/*', to: WmRug::RackGlobby
+    end
+  )
 end
 
 lotus_app = Rack::Builder.new do
