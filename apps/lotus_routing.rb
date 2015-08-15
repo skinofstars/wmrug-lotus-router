@@ -30,7 +30,6 @@ BASICS
     def call env
       dsl = <<DSL
 <h1>Lotus::Router - DSL</h1>
-
 <pre class="code">
 Lotus::Router.new do
   get '/intro',         to: WmRug::Intro
@@ -41,12 +40,52 @@ Lotus::Router.new do
   redirect '/legacy', to: '/'
 
   mount Api::App, at: '/api'
+</pre>
 
-  namespace 'admin' do
-    get '/users', to: Users::Index
-  end
+<p>
+<span class="marginnote">
+<table class="marginnotetable">
+  <tbody><tr>
+    <th>Verb</th>
+    <th>Path</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/identity</td>
+    <td>Identity::Show</td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/identity/new</td>
+    <td>Identity::New</td>
+  </tr>
+  <tr>
+    <td>POST</td>
+    <td>/identity</td>
+    <td>Identity::Create</td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/identity/edit</td>
+    <td>Identity::Edit</td>
+  </tr>
+  <tr>
+    <td>PATCH</td>
+    <td>/identity</td>
+    <td>Identity::Update</td>
+  </tr>
+  <tr>
+    <td>DELETE</td>
+    <td>/identity</td>
+    <td>Identity::Destroy</td>
+  </tr>
+</tbody></table>
+<small><em>member and collection not included</em></small>
+</span>
+</p>
 
-  # resource maps to usual HTTP verbs
+<pre class="code">
   resource 'identity' do
     member do
       get '/avatar'
@@ -59,7 +98,7 @@ Lotus::Router.new do
 end
 </pre>
 
-<a href="/lotus-router/basics" rel="previous">&laquo; Lotus::Router basics </a> &middot; <a href="/lotus-router/dsl" rel="next">Lotus::Router next? &raquo;</a>
+<a href="/lotus-router/basics" rel="previous">&laquo; Lotus::Router basics </a> &middot; <a href="/lotus-router/testing" rel="next">Lotus::Router testing &raquo;</a>
 
 DSL
 
@@ -67,49 +106,18 @@ DSL
     end
   end
 
-
-
-
-  class RackGlobby
+  class Testing
     def call(env)
-      # puts env
+      testing = <<TESTING
 
-      # just using rack hash
-      req = env['router.request']
+<h1>Lotus::Router - testing</h1>
 
-      # or rack's helper
-      req_helper = Rack::Request.new(env)
+<a href="/lotus-router/dsl" rel="previous">&laquo; Lotus::Router DSL </a> &middot; <a href="/lotus-router/dsl" rel="next">Lotus::Router next? &raquo;</a>
 
-      # rack response helper
-      res = Rack::Response.new
-      res.write "mmm, globby \n #{req.path} \n #{req_helper.path_info}"
-      res.finish
+TESTING
+      ['200', {'Content-Type' => 'text/html'}, [testing]]
     end
   end
 
-
-
 end
 
-
-# # an idea to remove the router from config.ru
-# class LotusRouterInit
-#   def initialize
-#     lapp = Lotus::Router.new do
-#       # basic rack
-#       get '/min', to: ->(env) { [200, {"Content-Type" => "text/html"}, ['<h1>Welcome to Lotus::Router!</h1> <a href="">link</a>']] }
-
-#       # get '/lamy', to: rack_app
-#       get '/classy', to: WmRug::RackClassy.new # or just RackClassy
-
-#       # RackClassy still reponds to #call, so rock on!
-#       mount WmRug::RackClassy, at: '/classymnt' #
-
-#       # using the controller + action syntax
-#       get '/moduley', to: 'app_controller#index'
-
-#       get '/*', to: WmRug::RackGlobby
-#     end
-
-#   end
-# end

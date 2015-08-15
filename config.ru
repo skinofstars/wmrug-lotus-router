@@ -35,18 +35,9 @@ lotus_router = Rack::Builder.new do
 
   run Rack::URLMap.new(
     '/lotus-router' => Lotus::Router.new do
-      get '/basics',  to: WmRug::Basics
-      get '/dsl',     to: WmRug::DSL
-
-
-      # RackClassy still reponds to #call, so rock on!
-      # mount WmRug::RackClassy, at: '/mounty'
-
-      # using the controller + action syntax
-      get '/moduley', to: 'app_controller#index'
-
-      # getting globby .... might be taking the 'y' thing a bit far
-      get '/*', to: WmRug::RackGlobby
+      get 'basics',  to: WmRug::Basics
+      get 'dsl',     to: WmRug::DSL
+      get 'testing',  to: WmRug::Testing
     end
   )
 end
