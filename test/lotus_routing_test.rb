@@ -1,6 +1,3 @@
-<h1>Lotus::Router - testing</h1>
-
-<pre class="code unconstrained">
 require 'minitest/autorun'
 require 'lotus/router'
 require 'rack/request'
@@ -19,9 +16,3 @@ describe Lotus::Router do
     response.body.must_equal 'Hi!'
   end
 end
-</pre>
-
-<nav class="slidenav">
-  <a href="/lotus-router/dsl" rel="previous">&laquo; Lotus::Router DSL </a> &middot;
-  <a href="/lotus-app/mounting" rel="next">Lotus app - mounting &raquo;</a>
-</nav>
