@@ -30,9 +30,14 @@ FOOT
       response.unshift(head)
       response.push(foot)
 
-      # response[0] = layout.gsub!(/__CONTENT__/, response[0])
-
       [status, headers, response]
+    end
+  end
+
+  class Templates
+    def self.erb(template)
+      path = File.expand_path("../app/templates/#{template}", __FILE__)
+      ERB.new(File.read(path)).result(binding)
     end
   end
 end

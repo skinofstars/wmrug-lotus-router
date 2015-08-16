@@ -1,3 +1,8 @@
-  table.marginnotetable {
-    text-align: left;
-  }
+table.marginnotetable {
+  text-align: left;
+}
+
+.slidenav {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

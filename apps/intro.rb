@@ -19,7 +19,9 @@ module WmRug
   <li>Routing in a Lotus application.</li>
 </ol>
 
-<a href="/rack/basics" rel="next">Rack basics &raquo;</a>
+<nav class="slidenav">
+  <a href="/rack/basics" rel="next">Rack basics &raquo;</a>
+</nav>
 
 TEXT
 

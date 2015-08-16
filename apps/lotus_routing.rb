@@ -1,5 +1,32 @@
 module WmRug
 
+  class Index
+    def self.call(env)
+      index = <<INDEX
+
+<h1>Lotus::Router</h1>
+
+<p>Lotus::Router<label for="1" class="margin-toggle sidenote-number">
+  <span class="sidenote"><a href="https://github.com/lotus/router">https://github.com/lotus/router</a></span>
+  is a simple and Rack compatible.</p>
+
+<p>You can easily use it as a standalone gem to make Rack routing easier.</p>
+
+<p>It's based on Joshua Hull's http_router<label for="2" class="margin-toggle sidenote-number">
+  <span class="sidenote"><a href="https://github.com/joshbuddy/http_router">https://github.com/joshbuddy/http_router</a></span>,
+  but with a nicer DSL.</p>
+
+<nav class="slidenav">
+  <a href="/rack/routing" rel="previous">&laquo; Rack routing </a> &middot;
+  <a href="/lotus-router/basics" rel="next">Lotus::Router basics &raquo;</a>
+</nav>
+
+INDEX
+
+      ['200', {'Content-Type' => 'text/html'}, [index]]
+    end
+  end
+
   class Basics
     # , using lambdas
     def self.call(env)
@@ -8,16 +35,19 @@ module WmRug
 
 <p>You can treat it as a Rack middleware, similar to Rack::URLMap.</p>
 
-<pre class="code">
+<pre class="code"><code>
 run Lotus::Router.new do
   get '/lotus-router/basics', to: lambda {|env| [200, {}, ['Hello world!']]}
   get '/lotus-router/dsl', to: WmRug::LotusDSL
 end
-</pre>
+</code></pre>
 
 <p>As long as you understand how Rack apps work, this is a simple drop-in</p>
 
-<a href="/rack/routing" rel="previous">&laquo; Rack routing </a> &middot; <a href="/lotus-router/dsl" rel="next">Lotus::Router DSL &raquo;</a>
+<nav class="slidenav">
+  <a href="/lotus-router" rel="previous">&laquo;Lotus::Router </a> &middot;
+  <a href="/lotus-router/dsl" rel="next">Lotus::Router DSL &raquo;</a>
+</nav>
 
 BASICS
 
@@ -98,7 +128,10 @@ Lotus::Router.new do
 end
 </pre>
 
-<a href="/lotus-router/basics" rel="previous">&laquo; Lotus::Router basics </a> &middot; <a href="/lotus-router/testing" rel="next">Lotus::Router testing &raquo;</a>
+<nav class="slidenav">
+  <a href="/lotus-router/basics" rel="previous">&laquo; Lotus::Router basics </a> &middot;
+  <a href="/lotus-router/testing" rel="next">Lotus::Router testing &raquo;</a>
+</nav>
 
 DSL
 
@@ -112,7 +145,10 @@ DSL
 
 <h1>Lotus::Router - testing</h1>
 
-<a href="/lotus-router/dsl" rel="previous">&laquo; Lotus::Router DSL </a> &middot; <a href="/lotus-router/dsl" rel="next">Lotus::Router next? &raquo;</a>
+<nav class="slidenav">
+  <a href="/lotus-router/dsl" rel="previous">&laquo; Lotus::Router DSL </a> &middot;
+  <a href="/lotus-app/mounting" rel="next">Lotus::Router next? &raquo;</a>
+</nav>
 
 TESTING
       ['200', {'Content-Type' => 'text/html'}, [testing]]

@@ -26,7 +26,38 @@
 - Testing
 
 ## 4. Lotus::Router in the Lotus framework
-- Mounting an app in the Lotus::Container - /config/environment.rb
+
+### Mounting/Config
+The default architecture is called Container, it can host several Lotus (and Rack) applications in the same Ruby process.
+
+Mounting an app in the Lotus::Container - /config/environment.rb
+
+
+
+### Routes file
 - App routes /apps/config/routes.rb
+
+these are defined with the /app itself
+
+
+the mount scopes your routes within the lotus context, so
+
+get '/', to: 'home#index' # routes to Web::Controllers::Home::Index
+
+
+### Resources
+in terms of a resource, you get something like this
+
+you can inspect on the command line using `lotus routes`
+
+
+### Helpers
+using helpers in templates
+
+routes.new_track_path for relative
+routes.new_track_url for absolute
+
+but they need the named option, as in `as: name`
+
 
 ## 5. Using the router in conjunction Rails - [IDEA]

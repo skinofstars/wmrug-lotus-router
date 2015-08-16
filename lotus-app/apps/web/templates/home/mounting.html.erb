@@ -1,0 +1,22 @@
+<h1>Lotus routing - Mounting</h1>
+
+<p>The default architecture is called Container, it can host several Lotus
+  (and Rack) applications in the same Ruby process.</p>
+
+<p>Each application lives in its own container</p>
+
+<p>We mount each application on it's own path. This is done the
+  project's <em>/config/environment.rb</em></p>
+
+<pre class="code">
+require_relative '../apps/web/application'
+
+Lotus::Container.configure do
+  mount Web::Application, at: '/'
+end
+</pre>
+
+<nav class="slidenav">
+<a href="/lotus-router/testing" rel="previous">&laquo; Lotus::Router DSL </a> &middot;
+<a href="/lotus-app<%= routes.routes_path %>" rel="next">Lotus routes &raquo;</a>
+</nav>

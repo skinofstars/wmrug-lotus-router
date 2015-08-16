@@ -15,7 +15,7 @@ use Rack::Static, :urls => ["/public"]
 intro = Rack::Builder.new do
   use Deck::KeyNav
   use Deck::Layout
-  run WmRug::Intro
+  run WmRug::Intro # we in-app path checking for '/'
 end
 
 rack_routing = Rack::Builder.new do
@@ -35,16 +35,20 @@ lotus_router = Rack::Builder.new do
 
   run Rack::URLMap.new(
     '/lotus-router' => Lotus::Router.new do
-      get 'basics',  to: WmRug::Basics
-      get 'dsl',     to: WmRug::DSL
+      get '/',        to: WmRug::Index
+      get 'basics',   to: WmRug::Basics
+      get 'dsl',      to: WmRug::DSL
       get 'testing',  to: WmRug::Testing
     end
   )
 end
 
 lotus_app = Rack::Builder.new do
-  # run Lotus::Container.new
-  run lambda { |env| ['200', {}, ['lotus_app']] }
+  require './lotus-app/config/environment'
+
+  run Rack::URLMap.new(
+    '/lotus-app' => Lotus::Container.new
+  )
 end
 
 outro = Rack::Builder.new do

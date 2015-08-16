@@ -22,7 +22,10 @@ module WmRug
   lambda { |env| [200, {'Content-Type' => 'text/html'}, ["Hello world!"]] }
 </pre>
 
-<a href="/" rel="previous">&laquo; Intro </a> &middot; <a href="/rack/routing" rel="next">Rack routing &raquo;</a>
+<nav class="slidenav">
+  <a href="/" rel="previous">&laquo; Intro </a> &middot;
+  <a href="/rack/routing" rel="next">Rack routing &raquo;</a>
+</nav>
 
 BASICS
 
@@ -60,7 +63,12 @@ run Rack::URLMap.new(
   '/rack/routing' => WmRug::RackRouting
 )
 </pre>
-<a href="/rack/basics" rel="previous">&laquo; Rack basics </a> &middot; <a href="/lotus-router/basics" rel="next">Lotus::Router basics &raquo;</a>
+
+<nav class="slidenav">
+  <a href="/rack/basics" rel="previous">&laquo; Rack basics </a> &middot;
+  <a href="/lotus-router" rel="next">Lotus::Router &raquo;</a>
+</nav>
+
 ROR
 
       ['200', {'Content-Type' => 'text/html'}, [routing_in_rack]]

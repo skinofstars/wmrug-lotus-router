@@ -1,0 +1,17 @@
+<h1>Lotus routing - application config</h1>
+
+<p>Each app hanndles it's own routes in <em>/apps/web<label for="1" class="margin-toggle sidenote-number"></label>/config/routes.rb</em><span class="sidenote"><em>web</em> is the name of this application</span></p>
+
+<p>Seperating the routes per application makes extraction of this application container far easier</p>
+
+<p>The mount scopes your routes within context, so:</p>
+
+<pre class="code">
+# routes to Web::Controllers::Home::Index
+get '/', to: 'home#index'
+</pre>
+
+<nav class="slidenav">
+<a href="/lotus-app<%= routes.mounting_path %>" rel="previous">&laquo; Lotus mounting </a> &middot;
+<a href="/lotus-app<%= routes.resources_path %>" rel="next">Lotus resources &raquo;</a>
+</nav>
