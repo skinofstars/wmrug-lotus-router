@@ -1,0 +1,73 @@
+<h1>Lotus::Router - DSL</h1>
+<pre class="code">
+Lotus::Router.new do
+  get '/intro',         to: WmRug::Intro
+  get '/rack/basics',   to: WmRug::Basics.new
+  get '/users',         to: 'users#index'
+  post '/users/:id',    to: 'users#update'
+
+  redirect '/legacy', to: '/'
+
+  mount Api::App, at: '/api'
+</pre>
+
+<p>
+<span class="marginnote">
+<table class="marginnotetable">
+  <tbody><tr>
+    <th>Verb</th>
+    <th>Path</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/identity</td>
+    <td>Identity::Show</td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/identity/new</td>
+    <td>Identity::New</td>
+  </tr>
+  <tr>
+    <td>POST</td>
+    <td>/identity</td>
+    <td>Identity::Create</td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/identity/edit</td>
+    <td>Identity::Edit</td>
+  </tr>
+  <tr>
+    <td>PATCH</td>
+    <td>/identity</td>
+    <td>Identity::Update</td>
+  </tr>
+  <tr>
+    <td>DELETE</td>
+    <td>/identity</td>
+    <td>Identity::Destroy</td>
+  </tr>
+</tbody></table>
+<small><em>member and collection not included</em></small>
+</span>
+</p>
+
+<pre class="code">
+  resource 'identity' do
+    member do
+      get '/avatar'
+    end
+
+    collection do
+      get '/api_keys'
+    end
+  end
+end
+</pre>
+
+<nav class="slidenav">
+  <a href="/lotus-router/basics" rel="previous">&laquo; Lotus::Router basics </a> &middot;
+  <a href="/lotus-router/testing" rel="next">Lotus::Router testing &raquo;</a>
+</nav>

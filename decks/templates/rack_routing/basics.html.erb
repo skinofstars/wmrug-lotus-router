@@ -1,0 +1,23 @@
+<h1>Rack basics</h1>
+
+<p>Rack is a Ruby webserver interface. It was intended to provide minimal API
+  for connecting web servers and web frameworks<label for="1" class="margin-toggle sidenote-number"></label>.
+    <span class="sidenote">
+      Creator, Christian Neukirchen's <a href="http://chneukirchen.org/blog/archive/2007/02/introducing-rack.html">Introducing Rack</a>
+    </span></p>
+
+<p>A <strong>rack app</strong> is an object which implements two required behaviours:</p>
+<ol>
+<li>It responds to #call, and takes an environment hash as a param.</li>
+<li>It returns an array of; [<em>status number</em>, <em>headers hash</em>, <em>enumberable content</em>]</li>
+</ol>
+
+<p>In its simplest form</p>
+<pre class="code">
+  lambda { |env| [200, {'Content-Type' => 'text/html'}, ["Hello world!"]] }
+</pre>
+
+<nav class="slidenav">
+  <a href="/" rel="previous">&laquo; Intro </a> &middot;
+  <a href="/rack/routing" rel="next">Rack routing &raquo;</a>
+</nav>

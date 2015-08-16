@@ -1,0 +1,8 @@
+<nav class="slidenav">
+  <% if previous.path %>
+  <a href="<%= previous.path %>" rel="previous">&laquo;<%= previous.name %> </a> &middot;
+  <% end %>
+  <% if next %>
+  <a href="<%= next.path %>" rel="next"><%= next.name %> &raquo;</a>
+  <% end %>
+</nav>
