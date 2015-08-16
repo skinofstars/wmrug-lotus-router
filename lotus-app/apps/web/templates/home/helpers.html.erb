@@ -1,0 +1,25 @@
+<h1>Lotus app - routes helpers</h1>
+
+<p>Conveniences in the form of routing helpers.</p>
+
+<pre class="code">
+# for relative paths
+routes.tracks_path
+routes.new_track_path
+
+# or for absolute urls
+routes.new_track_url
+</pre>
+
+<p>However, they need the named option when set up. (This is already done with <em>resources</em>)</p>
+<pre class="code">
+# /apps/web/config/routes.rb
+get '/', to: 'tracks#index', as: :track
+</pre>
+
+<p>You can view all routes, and their paths, using <em>lotus routes</em></p>
+
+<nav class="slidenav">
+  <a href="/lotus-app<%= routes.resources_path %>" rel="previous">&laquo; Lotus app - resources </a> &middot;
+  <a href="/outro" rel="next">Outro &raquo;</a>
+</nav>

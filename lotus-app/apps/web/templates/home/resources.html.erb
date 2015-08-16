@@ -1,22 +1,27 @@
-<h1>Lotus routing - resources</h1>
+<h1>Lotus app - resources</h1>
 
-<p>The router provides many common conveniences. Probably the most well known routing helper is the <em>resource</em></p>
+<p>The router provides many common conveniences. Probably the most well known
+  routing helper is the <em>resource</em>. There's also <em>namespace</em>, <em>member</em>
+  and <em>collection</em>.</p>
 
 <pre class="code unconstrained">
 # /apps/web/config/routes.rb
+resources :tracks, except: [:destroy] do
+  member do
+    get 'trace'
+  end
+end
 
-resources :tracks
-
-#     tracks GET, HEAD  /tracks            Web::Controllers::Tracks::Index
-#  new_track GET, HEAD  /tracks/new        Web::Controllers::Tracks::New
-#     tracks POST       /tracks            Web::Controllers::Tracks::Create
-#      track GET, HEAD  /tracks/:id        Web::Controllers::Tracks::Show
-# edit_track GET, HEAD  /tracks/:id/edit   Web::Controllers::Tracks::Edit
-#      track PATCH      /tracks/:id        Web::Controllers::Tracks::Update
-#      track DELETE     /tracks/:id        Web::Controllers::Tracks::Destroy
+# trace_track GET, HEAD  /tracks/:id/trace   Web::Controllers::Tracks::Trace
+#      tracks GET, HEAD  /tracks             Web::Controllers::Tracks::Index
+#   new_track GET, HEAD  /tracks/new         Web::Controllers::Tracks::New
+#      tracks POST       /tracks             Web::Controllers::Tracks::Create
+#       track GET, HEAD  /tracks/:id         Web::Controllers::Tracks::Show
+#  edit_track GET, HEAD  /tracks/:id/edit    Web::Controllers::Tracks::Edit
+#       track PATCH      /tracks/:id         Web::Controllers::Tracks::Update
 </pre>
 
 <nav class="slidenav">
-<a href="/lotus-app<%= routes.routes_path %>" rel="previous">&laquo; Lotus routes </a> &middot;
-<a href="/outro" rel="next">Outro &raquo;</a>
+  <a href="/lotus-app<%= routes.routes_path %>" rel="previous">&laquo; Lotus app - routing config </a> &middot;
+  <a href="/lotus-app<%= routes.helpers_path %>" rel="next">Lotus app - helpers &raquo;</a>
 </nav>
