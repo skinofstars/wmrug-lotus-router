@@ -22,8 +22,9 @@ rack_routing = Rack::Builder.new do
   use Deck::KeyNav
   use Deck::Layout
   run Rack::URLMap.new(
-    '/rack/basics'  => WmRug::RackBasics,
-    '/rack/routing' => WmRug::RackRouting
+    '/rack/basics'      => WmRug::RackBasics,
+    '/rack/routing'     => WmRug::RackRouting,
+    '/rack/routing_two' => WmRug::RackRoutingTwo
   )
 end
 
@@ -52,8 +53,12 @@ lotus_app = Rack::Builder.new do
 end
 
 outro = Rack::Builder.new do
-  # run WmRug::Outro.new
-  run lambda { |env| ['200', {}, ['outro']] }
+  use Deck::KeyNav
+  use Deck::Layout
+  router = Lotus::Router.new do
+    get '/outro', to: WmRug::Outro
+  end
+  run router
 end
 
 
@@ -65,5 +70,5 @@ run Rack::Cascade.new([
   lotus_router,
   lotus_app,
   outro,
-  lambda { |env| ["404", {}, ["Not found"]] }
+  lambda { |env| ["404", {}, ["Not found"]] } # safer to finish with a 404 that nothing
 ])

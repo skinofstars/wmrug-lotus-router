@@ -19,6 +19,8 @@ module WmRug
   <li>Routing in a Lotus application.</li>
 </ol>
 
+<p>Follow along:<br /> <small><a href="https://github.com/skinofstars/wmrug-lotus-router/">github.com/skinofstars/wmrug-lotus-router</a></small></p>
+
 <nav class="slidenav">
   <a href="/rack/basics" rel="next">Rack basics &raquo;</a>
 </nav>
