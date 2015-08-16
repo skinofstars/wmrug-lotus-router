@@ -7,10 +7,7 @@ module Deck
     def call(env)
       status, headers, response = @app.call(env)
 
-      key_nav = <<KEYNAV
-<script type="text/javascript" src="/public/script.js"></script>
-KEYNAV
-
+      key_nav = '<script type="text/javascript" src="/public/script.js"></script>'
       response.push(key_nav)
 
       [status, headers, response]

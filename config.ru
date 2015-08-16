@@ -4,7 +4,7 @@
 # grab our apps
 Dir["apps/*.rb"].sort.each {|req| require_relative req}
 
-# grab the layouts and slide overrides
+# grab the layouts and slide templates
 Dir["decks/*.rb"].sort.each {|req| require_relative req}
 
 # Reload .rb files on change. Always add ContentLength header. Server static assets.
@@ -15,7 +15,7 @@ use Rack::Static, :urls => ["/public"]
 intro = Rack::Builder.new do
   use Deck::KeyNav
   use Deck::Layout
-  run WmRug::Intro # we in-app path checking for '/'
+  run WmRug::Intro # in-app path checking for '/'
 end
 
 rack_routing = Rack::Builder.new do
@@ -33,7 +33,6 @@ lotus_router = Rack::Builder.new do
 
   use Deck::KeyNav
   use Deck::Layout
-
   run Rack::URLMap.new(
     '/lotus-router' => Lotus::Router.new do
       get '/',        to: WmRug::Index
@@ -60,8 +59,6 @@ outro = Rack::Builder.new do
   end
   run router
 end
-
-
 
 # cascade will try new apps until it hits non [404, 405]
 run Rack::Cascade.new([

@@ -7,8 +7,6 @@ module Deck
     def call(env)
       status, headers, response = @app.call(env)
 
-      # puts response.inspect
-
       head = <<HEAD
 <html>
 <head>
@@ -20,40 +18,18 @@ module Deck
 <body>
 HEAD
 
-# content goes here ;)
-
       foot = <<FOOT
 </body>
 </html>
 FOOT
 
+      # Rack iterates over each item in the response array.
+      # This allows us to modify the output by pushing items in to the array.
+
       response.unshift(head)
       response.push(foot)
 
       [status, headers, response]
-    end
-  end
-
-  class Templates
-    def self.erb(template)
-      path = File.expand_path("../templates/#{template}", __FILE__)
-      ERB.new(File.read(path)).result(binding)
-    end
-
-    def self.nav(args)
-      # TODO
-
-      # maybe use something like
-      # nav = Deck::Templates.nav({
-      #   before: {
-      #     path: '',
-      #     name: ''
-      #   },
-      #   after: {
-      #     path: '',
-      #     name: ''
-      #   }
-      # })
     end
   end
 end

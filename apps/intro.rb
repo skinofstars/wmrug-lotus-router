@@ -13,8 +13,7 @@ module WmRug
 <p>We're going to cover a few things.</p>
 
 <ol>
-  <li>General Rack intro.</li>
-  <li>Basic routing in Rack apps.</li>
+  <li>General Rack intro and basic routing.</li>
   <li>Using Lotus::Router with Rack apps.</li>
   <li>Routing in a Lotus application.</li>
 </ol>

@@ -18,7 +18,7 @@ It's a great software stack.</p>
 <p>Kevin Carmody <a href="https://twitter.com/skinofstars">@skinofstars</a></p>
 
 <nav class="slidenav">
-<a href="/lotus-app/resources" rel="previous">&laquo; Lotus routing - resources</a>
+<a href="/lotus-app/helpers" rel="previous">&laquo; Lotus routing - resources</a>
 </nav>
 
 TEXT

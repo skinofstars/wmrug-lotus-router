@@ -1,17 +1,17 @@
 <h1>Lotus::Router - DSL</h1>
 <pre class="code unconstrained">
 Lotus::Router.new do
-  get '/foo',       to: Foo::Index
-  post '/foo/:id',  to: 'foo#update'
-  redirect '/old',  to: '/new'
+  get '/tracks',      to: tracks::Index
+  post '/tracks/:id', to: 'tracks#update'
+  redirect '/old',    to: '/new'
 
   # constraints
-  get '/foo/:id',
+  get '/tracks/:id',
     id: /\d+/,
     to: ->(env) { [200, {}, [":id must be a number!"]] }
 
   # optional tokens
-  get '/foo(.:format)',
+  get '/tracks(.:format)',
     to: ->(env) { [200, {}, ["#{ env['router.params'][:format] }"]] }
 
   # globbing
@@ -21,6 +21,6 @@ end
 </pre>
 
 <nav class="slidenav">
-  <a href="/lotus-router/basics" rel="previous">&laquo; Lotus::Router basics </a> &middot;
-  <a href="/lotus-router/testing" rel="next">Lotus::Router testing &raquo;</a>
+  <a href="/lotus-router/basics" rel="previous">&laquo; Lotus::Router - basics </a> &middot;
+  <a href="/lotus-router/testing" rel="next">Lotus::Router - testing &raquo;</a>
 </nav>
