@@ -1,4 +1,3 @@
-#\ -p 3000 -o 0.0.0.0 -E development
 # ^^ rackup will read the first line as config. see `rackup --help`
 
 # grab our apps
