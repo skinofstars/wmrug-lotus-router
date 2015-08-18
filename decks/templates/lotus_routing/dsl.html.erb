@@ -1,14 +1,14 @@
 <h1>Lotus::Router - DSL</h1>
 <pre class="code unconstrained">
 Lotus::Router.new do
-  get '/tracks',      to: tracks::Index
+  get '/tracks',      to: Tracks::Index
   post '/tracks/:id', to: 'tracks#update'
   redirect '/old',    to: '/new'
 
   # constraints
   get '/tracks/:id',
     id: /\d+/,
-    to: ->(env) { [200, {}, [":id must be a number!"]] }
+    to: ->(env) { [200, {}, ["#{ env['router.params'][:id] } must be a number!"]] }
 
   # optional tokens
   get '/tracks(.:format)',
