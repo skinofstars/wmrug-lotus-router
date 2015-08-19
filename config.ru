@@ -43,7 +43,7 @@ lotus_router = Rack::Builder.new do
 end
 
 lotus_app = Rack::Builder.new do
-  require './lotus-app/config/environment'
+  require './apps/lotus-app/config/environment'
 
   run Rack::URLMap.new(
     '/lotus-app' => Lotus::Container.new
